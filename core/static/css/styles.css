@@ -595,3 +595,8 @@ footer {
     font-size: 14px;
   }
 }
+
+
+#navbar {
+  display: none; /* Oculte o navbar */
+}
