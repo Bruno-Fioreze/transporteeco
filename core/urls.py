@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from core.views import view_home
-
+from core.sitemaps import sitemap
 
 urlpatterns = [
     path('', view_home),
@@ -13,4 +13,5 @@ urlpatterns = [
     path('retirada-entulho-sp', view_home),
     path('retira-entulho-sp', view_home),
     path('retira-entulho-sao-paulo', view_home),
+    path('sitemap.xml', sitemap, name='sitemap'),
 ]
