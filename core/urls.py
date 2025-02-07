@@ -6,6 +6,7 @@ from core.sitemaps import sitemap
 urlpatterns = [
     path('', view_home),
     path('retirada-entulho-sao-paulo', view_home),
+    path('retirada-entulho-sao-paulo/', view_home),
     path('transporte-entulho-sao-paulo', view_home),
     path('coleta-entulho-sao-paulo', view_home),
     path('coleta-entulho-sp', view_home),
