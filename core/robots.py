@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.conf import settings
 import os
 
-def robots(request):
+def  robots(request):
     sitemap_path = os.path.join(settings.BASE_DIR, 'static', 'robots.txt')
     try:
         with open(sitemap_path, 'r') as file:
