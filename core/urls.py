@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from core.views import view_home
 from core.sitemaps import sitemap
+from core.robots import robots 
 
 urlpatterns = [
     path('', view_home),
@@ -23,4 +24,5 @@ urlpatterns = [
     path('coleta-entulho-sao-paulo/sitemap.xml', sitemap),
     path('transporte-entulho-sao-paulo/sitemap.xml', sitemap),
     path('retirada-entulho-sao-paulo/sitemap.xml', sitemap),
+    path('robots.txt', robots),
 ]
