@@ -597,6 +597,11 @@ footer {
   .remocao-answer p {
     font-size: 14px;
   }
+
+  .contact h1 {
+
+    font-size: 25px;
+  }
 }
 
 
@@ -607,3 +612,4 @@ footer {
 .info-item {
   display: none;
 }
+
