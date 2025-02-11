@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
-from core.views import view_home, view_home_teste
+from core.views import view_home, view_home_teste, view_home_tag
 from core.sitemaps import sitemap
 from core.robots import robots 
 
@@ -15,6 +15,7 @@ urlpatterns = [
     path('retirada-entulho-sp', view_home_teste),
     path('retira-entulho-sp', view_home_teste),
     path('retira-entulho-sao-paulo', view_home_teste),
+    path('tag/', view_home_tag),
     path('sitemap.xml', sitemap, name='sitemap'),
     re_path(r'^robots\.txt', robots),
     path('retira-entulho-sao-paulo/sitemap.xml', sitemap),
