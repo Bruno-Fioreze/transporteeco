@@ -3,6 +3,6 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://transporteeco.com.br/sitemap.xml
+Sitemap: https://transporteeco.com.br/sitemap.xml 
 # ---------------------------
 # END YOAST BLOCK
