@@ -8,4 +8,22 @@ def view_home_teste(request):
     return render(request, 'faq.html')
 
 def view_home_tag(request): 
-    return render(request, "tag.html")
+    context = {"type": "retirada", "title": "RETIRADA", "regiao": "São Paulo"}
+    return render(request, "tag.html", context=context)
+
+def view_home_tag_retirada_sp(request): 
+    context = {"type": "retirada", "title": "RETIRADA", "regiao": "São Paulo"}
+    return render(request, "tag.html", context=context)
+
+def view_home_tag_coleta_sp(request): 
+    context = {"type": "coleta", "title": "COLETA", "regiao": "São Paulo"}
+    return render(request, "tag.html", context=context)
+
+def view_home_tag_transporte_sp(request): 
+    context = {"type": "transporte", "title": "Transporte", "regiao": "São Paulo"}
+    return render(request, "tag.html", context=context)
+
+
+def view_home_tag_zona_sul(request): 
+    context = {"type": "retirada", "title": "Retirada", "regiao": "Zona Sul"}
+    return render(request, "tagV2.html", context=context)
