@@ -15,6 +15,10 @@ def view_home_tag_retirada_sp(request):
     context = {"type": "retirada", "title": "RETIRADA", "regiao": "São Paulo"}
     return render(request, "tag.html", context=context)
 
+def view_home_tag_retiradas_sp(request): 
+    context = {"type": "retiradas", "title": "RETIRADAS", "regiao": "São Paulo"}
+    return render(request, "tag.html", context=context)
+
 def view_home_tag_coleta_sp(request): 
     context = {"type": "coleta", "title": "COLETA", "regiao": "São Paulo"}
     return render(request, "tag.html", context=context)
