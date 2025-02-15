@@ -6,7 +6,7 @@ from core.robots import robots
 
 urlpatterns = [
     path('', view_home),
-    path('retirada-de-entulho-sao-paulo/', view_home_tag_retiradas_sp),
+    path('retirada-entulho-sao-paulo/', view_home_tag_retiradas_sp),
     path('tag/retirada-de-entulho-em-sao-paulo/', view_home_tag_retirada_sp),
     path('tag/transporte-de-entulho-em-sao-paulo/', view_home_tag_transporte_sp),
     path('tag/coleta-de-entulho-em-sao-paulo/', view_home_tag_coleta_sp),
