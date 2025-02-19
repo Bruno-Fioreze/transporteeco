@@ -34,5 +34,5 @@ def view_home_tag_zona_sul(request):
 
 
 def view_home_tag_retirada_interlagos(request): 
-    context = {"type": "retirada", "title": "Retirada", "regiao": "Zona Sul"}
-    return render(request, "tagV3.html", context=context)
+    context = {"type": "remoção", "title": "remoção", "regiao": "Zona Sul"}
+    return render(request, "tagV4.html", context=context)
