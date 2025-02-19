@@ -31,3 +31,8 @@ def view_home_tag_transporte_sp(request):
 def view_home_tag_zona_sul(request): 
     context = {"type": "retirada", "title": "Retirada", "regiao": "Zona Sul"}
     return render(request, "tagV2.html", context=context)
+
+
+def view_home_tag_retirada_interlagos(request): 
+    context = {"type": "retirada", "title": "Retirada", "regiao": "Zona Sul"}
+    return render(request, "tagV3.html", context=context)
