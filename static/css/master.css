@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/*------------------------------------------------*/
+/* Start Global CSS */
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f1f1f1;
+}
+
+div {
+  display: block;
+}
+
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 80px;
+  color: #363958;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-family: "Bebas Neue";
+  font-size: 48px;
+  color: #363958;
+}
+
+h4 {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #363958;
+}
+
+h5 {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #363958;
+}
+
+/* End Global CSS */
+/*------------------------------------------------*/
+/* Start Header */
+
+#header {
+  height: 60vh;
+  padding: 85px 0 70px 0;
+  background-color: #f4f5ff;
+}
+
+#header span {
+  font-weight: 700;
+}
+
+.custom-navbar {
+  background-color: #fff;
+}
+
+.custom-ul {
+  text-align: center;
+  background-color: #fff;
+}
+
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
+}
+
+.custom-li {
+  font-weight: 700;
+  padding: 0 25px;
+}
+
+.custom-logo {
+  width: 10%;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.custom-highlight {
+  color: green;
+}
+
+.custom-btn {
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+
+.custom-card {
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+.custom-img-width {
+  width: 80px;
+}
+
+.custom-service-card {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: none;
+  min-height: 200px;
+  border-radius: 10px;
+}
+
+.card-size-min {
+  min-height: 180px;
+}
+
+.card-title {
+  color: green;
+}
+
+.title-green {
+  color: green;
+}
+
+@media (max-width: 767px) {
+  .main {
+    margin-top: 550px;
+  }
+}
+
+.custom-footer {
+  background-color: transparent;
+  border: none;
+}
+
+.custom-bg {
+  height: 350px;
+  background: #f1f1f1;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+
+#footer {
+  padding: 25px 0;
+}
+
+#footer h5 {
+  padding: 10px 0;
+}
+
+#footer li a {
+  text-decoration: none;
+}
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 20px;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.2s ease-in-out;
+}
+
+.whatsapp-btn {
+  background-color: #25D366;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.phone-btn {
+  background-color: #007bff;
+  color: white;
+  animation: pulse 1.5s infinite; /* Adicionando a animação de pulsação */
+}
+
+/* Animação de pulsação */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Aumenta o tamanho para 110% */
+  }
+  100% {
+    transform: scale(1); /* Retorna ao tamanho original */
+  }
+}
+
+.floating-btn i {
+  font-size: 30px;
+}
