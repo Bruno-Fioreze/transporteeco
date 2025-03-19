@@ -130,6 +130,24 @@ h5 {
   .main {
     margin-top: 550px;
   }
+
+  .floating-btn {
+    right: 10px;
+    position: fixed;
+    bottom: 20px;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.2s ease-in-out;
+  }
+
 }
 
 .custom-footer {
@@ -161,7 +179,7 @@ h5 {
 .floating-btn {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 10px;
   font-size: 20px;
   border-radius: 50%;
   width: 60px;
@@ -198,6 +216,7 @@ h5 {
   100% {
     transform: scale(1); /* Retorna ao tamanho original */
   }
+  
 }
 
 .floating-btn i {
