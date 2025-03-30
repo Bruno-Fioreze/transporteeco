@@ -3,10 +3,22 @@
 /*------------------------------------------------*/
 /* Start Global CSS */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: #f1f1f1;
+  overflow-x: hidden; /* Impede rolagem horizontal */
+  height: 100vh; /* Define a altura do body como 100% da altura da tela */
+  width: 100vw; /* Define a largura do body como 100% da largura da tela */
+  margin: 0;
+  padding: 0;
 }
+
 
 div {
   display: block;
@@ -45,7 +57,6 @@ h5 {
 /* Start Header */
 
 #header {
-  height: 60vh;
   padding: 85px 0 70px 0;
   background-color: #f4f5ff;
 }
@@ -87,31 +98,23 @@ h5 {
   outline: none;
 }
 
-
 .custom-card {
   border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
   padding: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   border: none;
 }
 
 .custom-img-width {
-  width: 80px;
+  width: 80%;
+  max-width: 100%; /* Garante que a imagem não ultrapasse o limite da tela */
 }
 
 .custom-service-card {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   border: none;
   min-height: 200px;
-  border-radius: 10px;
 }
 
 .card-size-min {
@@ -131,23 +134,19 @@ h5 {
     margin-top: 550px;
   }
 
-  .floating-btn {
-    right: 10px;
-    position: fixed;
-    bottom: 20px;
-    font-size: 20px;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    z-index: 9999;
-    transition: transform 0.2s ease-in-out;
+  /* Reduz o espaçamento de margem da imagem */
+  .logo {
+    width: 70%;
+    max-width: 100%; /* Garante que a logo não ultrapasse o espaço disponível */
   }
 
+  .custom-li {
+    padding: 10px 15px;
+  }
+
+  .custom-text {
+    font-size: 14px;
+  }
 }
 
 .custom-footer {
@@ -159,10 +158,6 @@ h5 {
   height: 350px;
   background: #f1f1f1;
   border-radius: 12px;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
-  -o-border-radius: 12px;
 }
 
 #footer {
@@ -176,21 +171,24 @@ h5 {
 #footer li a {
   text-decoration: none;
 }
+
 .floating-btn {
   position: fixed;
-  bottom: 20px;
-  right: 10px;
-  font-size: 20px;
-  border-radius: 50%;
   width: 60px;
   height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  z-index: 9999;
-  transition: transform 0.2s ease-in-out;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 1px 1px 2px #888;
+  z-index: 1000;
+}
+
+.floating-btn i {
+  margin-top: 16px;
 }
 
 .whatsapp-btn {
@@ -202,7 +200,7 @@ h5 {
 .phone-btn {
   background-color: #007bff;
   color: white;
-  animation: pulse 1.5s infinite; /* Adicionando a animação de pulsação */
+  animation: pulse 1.5s infinite;
 }
 
 /* Animação de pulsação */
@@ -211,14 +209,10 @@ h5 {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.1); /* Aumenta o tamanho para 110% */
+    transform: scale(1.1);
   }
   100% {
-    transform: scale(1); /* Retorna ao tamanho original */
+    transform: scale(1);
   }
-  
 }
 
-.floating-btn i {
-  font-size: 30px;
-}

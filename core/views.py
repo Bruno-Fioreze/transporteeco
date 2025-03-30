@@ -5,7 +5,7 @@ def view_home(request):
     return render(request, 'home.html')
 
 
-def view_home_v2(request):
+def view_home_v3(request):
     return render(request, 'new_lp.html')
 
 
