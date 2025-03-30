@@ -233,6 +233,9 @@ h5 {
   margin-top: 20px;
 }
 
+#cover {
+  padding-bottom: 14px;
+}
 .custom-services-card .card-body {
   flex-grow: 1;
 }
