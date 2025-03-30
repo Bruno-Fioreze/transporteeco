@@ -216,3 +216,23 @@ h5 {
   }
 }
 
+.custom-services-card {
+  height: 300px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-services-card .card-body {
+  flex-grow: 1;
+}
+
+.custom-services-card-v2 {
+  height: 150px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-services-card-v2 .card-body {
+  flex-grow: 1;
+}
+

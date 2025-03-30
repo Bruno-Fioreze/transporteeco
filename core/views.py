@@ -6,7 +6,8 @@ def view_home(request):
 
 
 def view_home_v3(request):
-    return render(request, 'new_lp.html')
+    context = {"type": "retirada", "title": "RETIRADA", "regiao": "São Paulo"}
+    return render(request, 'new_lp.html', context=context)
 
 
 def view_home_teste(request):
