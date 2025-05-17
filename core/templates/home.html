@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Adiciona suporte a skip links para acessibilidade -->
     <style>
         /* Reset e estilos base */
 * {
@@ -1641,80 +1642,361 @@ body {
         justify-content: center;
     }
 }
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.testimonials {
+    padding: 80px 0;
+    background-color: var(--light-color);
+}
+
+.testimonials h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: var(--dark-color);
+}
+
+.testimonials-carousel {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.testimonials-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 30px;
+    padding: 20px 10px;
+}
+
+.testimonial-card {
+    flex: 0 0 calc(33.333% - 40px);
+    background: rgba(26, 115, 232, 0.05);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 2px solid rgba(26, 115, 232, 0.2);
+    box-shadow: 0 2px 10px rgba(26, 115, 232, 0.05);
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    transform: scale(0.95);
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    transform: scale(1);
+    border-color: rgba(26, 115, 232, 0.4);
+    box-shadow: 0 5px 15px rgba(26, 115, 232, 0.1);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(26, 115, 232, 0.6);
+    box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+}
+
+.testimonial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(26, 115, 232, 0.1);
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.client-details h3 {
+    font-size: 1.2rem;
+    color: #000000;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.client-details p {
+    font-size: 0.9rem;
+    color: #333333;
+}
+
+.rating {
+    color: #ffc107;
+    font-size: 1.1rem;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #000000;
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(26, 115, 232, 0.03);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 8px 8px 0;
+    position: relative;
+    font-weight: 400;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-text p {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-text::before {
+    content: '"';
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    font-size: 3em;
+    color: var(--primary-color);
+    opacity: 0.1;
+    font-family: Georgia, serif;
+}
+
+.testimonial-text::after {
+    content: '"';
+    position: absolute;
+    bottom: -35px;
+    right: 10px;
+    font-size: 3em;
+    color: var(--primary-color);
+    opacity: 0.1;
+    font-family: Georgia, serif;
+}
+
+/* Suporte a modo escuro */
+@media (prefers-color-scheme: dark) {
+    .testimonial-card blockquote {
+        background: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
+    }
+}
+
+.service-type {
+    font-size: 0.95rem;
+    color: #000000;
+    font-weight: 600;
+    margin-bottom: 5px;
+    padding: 5px 12px;
+    background: rgba(26, 115, 232, 0.1);
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.service-date {
+    font-size: 0.9rem;
+    color: #333333;
+    margin-top: 10px;
+}
+
+.testimonials-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 20px;
+}
+
+.testimonial-prev,
+.testimonial-next {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.2);
+}
+
+.testimonial-prev:hover,
+.testimonial-next:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+}
+
+.testimonial-prev:disabled,
+.testimonial-next:disabled {
+    background: rgba(26, 115, 232, 0.3);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.testimonials-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.testimonial-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(26, 115, 232, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.testimonial-indicator:hover {
+    background: rgba(26, 115, 232, 0.4);
+}
+
+.testimonial-indicator.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
+    border-color: rgba(26, 115, 232, 0.2);
+}
+
+@media (max-width: 992px) {
+    .testimonial-card {
+        flex: 0 0 calc(50% - 30px);
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 calc(100% - 20px);
+        margin: 0 10px;
+    }
+
+    .testimonials-track {
+        gap: 20px;
+        padding: 10px 5px;
+    }
+
+    .testimonial-card blockquote {
+        font-size: 1rem;
+    }
+}
+
+/* Suporte a modo escuro */
+@media (prefers-color-scheme: dark) {
+    .testimonial-card {
+        background: rgba(26, 115, 232, 0.15);
+    }
+
+    .testimonial-card blockquote,
+    .client-details h3,
+    .service-type {
+        color: #ffffff;
+    }
+
+    .client-details p,
+    .service-date {
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Suporte a alto contraste */
+@media (prefers-contrast: high) {
+    .testimonial-card {
+        border: 2px solid var(--primary-color);
+        background: var(--light-color);
+    }
+}
     </style>
 </head>
 <body>
-    <header class="header">
+    <!-- Skip link para acessibilidade -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header class="header" role="banner">
         <div class="container">
-            <nav class="nav-menu">
+            <nav class="nav-menu" role="navigation" aria-label="Menu principal">
                 <div class="logo">
                     <h1>Transporte Eco</h1>
                 </div>
-                <ul class="nav-links">
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#precos">Preços</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li class="phone-number">
-                        <a href="tel:+5511983347164">
-                            <i class="fas fa-phone"></i> (11) 98334-7164
+                <button class="mobile-menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menu de navegação">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+                <ul class="nav-links" id="nav-links" role="menu">
+                    <li role="none"><a href="#servicos" role="menuitem">Serviços</a></li>
+                    <li role="none"><a href="#precos" role="menuitem">Preços</a></li>
+                    <li role="none"><a href="#sobre" role="menuitem">Sobre</a></li>
+                    <li role="none" class="phone-number">
+                        <a href="tel:+5511983347164" role="menuitem">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>(11) 98334-7164</span>
                         </a>
                     </li>
                 </ul>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
+    <main id="main-content" role="main">
+        <section class="hero" aria-label="Seção principal">
             <div class="container">
                 <div class="hero-grid">
                     <div class="hero-carousel-section">
-                        <div class="hero-carousel">
-                            <div class="carousel-item active">
+                        <div class="hero-carousel" role="region" aria-label="Carrossel de destaques">
+                            <div class="carousel-item active" role="tabpanel" aria-labelledby="carousel-tab-1">
                                 <span class="overline">Serviço Profissional</span>
                                 <h1>Retirada de Entulho em São Paulo</h1>
                                 <p>Especialistas em retirada de entulho ensacado com atendimento rápido em toda região</p>
                             </div>
-                            <div class="carousel-item">
+                            <div class="carousel-item" role="tabpanel" aria-labelledby="carousel-tab-2" aria-hidden="true">
                                 <span class="overline">Descarte Consciente</span>
                                 <h1>Retirada de Entulho Ensacado</h1>
                                 <p>Equipe especializada e descarte ecologicamente correto para sua tranquilidade</p>
                             </div>
-                            <div class="carousel-item">
+                            <div class="carousel-item" role="tabpanel" aria-labelledby="carousel-tab-3" aria-hidden="true">
                                 <span class="overline">Compromisso</span>
                                 <h1>Descarte Legal e Seguro</h1>
                                 <p>Atendemos todas as zonas de São Paulo com agilidade e segurança</p>
                             </div>
                         </div>
-                        <div class="carousel-indicators">
-                            <span class="indicator active"></span>
-                            <span class="indicator"></span>
-                            <span class="indicator"></span>
+                        <div class="carousel-indicators" role="tablist" aria-label="Controles do carrossel">
+                            <span class="indicator active" role="tab" id="carousel-tab-1" aria-selected="true" aria-controls="carousel-item-1" tabindex="0"></span>
+                            <span class="indicator" role="tab" id="carousel-tab-2" aria-selected="false" aria-controls="carousel-item-2" tabindex="0"></span>
+                            <span class="indicator" role="tab" id="carousel-tab-3" aria-selected="false" aria-controls="carousel-item-3" tabindex="0"></span>
                         </div>
                     </div>
                     <div class="hero-info-section">
                         <h2 class="company-name">Transporte Eco</h2>
                         <p class="company-description">Sua parceira confiável para um descarte consciente e profissional</p>
                         <div class="company-stats">
-                            <div class="stat-item">
-                                <i class="fas fa-calendar-alt"></i>
+                            <div class="stat-item" role="article">
+                                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                                 <div class="stat-content">
                                     <span class="stat-number">1</span>
                                     <span class="stat-label">Ano de Experiência</span>
                                 </div>
                             </div>
-                            <div class="stat-item">
-                                <i class="fas fa-dumpster"></i>
+                            <div class="stat-item" role="article">
+                                <i class="fas fa-dumpster" aria-hidden="true"></i>
                                 <div class="stat-content">
                                     <span class="stat-number">1000+</span>
                                     <span class="stat-label">Sacos Retirados</span>
                                 </div>
                             </div>
-                            <div class="stat-item">
-                                <i class="fas fa-star"></i>
+                            <div class="stat-item" role="article">
+                                <i class="fas fa-star" aria-hidden="true"></i>
                                 <div class="stat-content">
                                     <span class="stat-number">100%</span>
                                     <span class="stat-label">Qualidade no Atendimento</span>
@@ -1722,17 +2004,17 @@ body {
                             </div>
                         </div>
                         <div class="cta-buttons">
-                            <a href="tel:+5511983347164" class="btn btn-primary">
-                                <i class="fas fa-phone"></i> Ligar Agora
+                            <a href="tel:+5511983347164" class="btn btn-primary" role="button" aria-label="Ligar agora para (11) 98334-7164">
+                                <i class="fas fa-phone" aria-hidden="true"></i> Ligar Agora
                             </a>
-                            <a href="https://wa.me/5511983347164" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            <a href="https://wa.me/5511983347164" class="btn btn-whatsapp" target="_blank" role="button" aria-label="Abrir WhatsApp em nova janela">
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="hero-background"></div>
+            <div class="hero-background" aria-hidden="true"></div>
         </section>
 
         <section class="services" id="servicos">
@@ -1913,6 +2195,368 @@ body {
                 </div>
             </div>
         </section>
+<!-- 
+        <section class="testimonials" id="depoimentos">
+            <div class="container">
+                <h2>Depoimentos de Clientes Satisfeitos</h2>
+                <div class="testimonials-carousel" role="region" aria-label="Carrossel de depoimentos">
+                    <div class="testimonials-track">
+                        <!-- Depoimento 1 -->
+                        <div class="testimonial-card" role="article">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <div class="client-details">
+                                        <h3>Maria Silva</h3>
+                                        <p>Moema, São Paulo</p>
+                                    </div>
+                                </div>
+                                <div class="rating" aria-label="Avaliação 5 de 5 estrelas">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="testimonial-text">
+                                <p>"Excelente serviço de retirada de entulho! A equipe foi muito profissional, chegou no horário marcado e deixou tudo limpo. Recomendo fortemente!"</p>
+                            </div>
+                            <p class="service-type">Retirada de Entulho</p>
+                            <p class="service-date">Realizado em Janeiro/2024</p>
+                        </div>
+
+                        <!-- Depoimento 2 -->
+                        <div class="testimonial-card" role="article">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <div class="client-details">
+                                        <h3>Carlos Santos</h3>
+                                        <p>Vila Mariana, São Paulo</p>
+                                    </div>
+                                </div>
+                                <div class="rating" aria-label="Avaliação 5 de 5 estrelas">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="testimonial-text">
+                                <p>"Precisava retirar móveis antigos e a equipe fez tudo com muito cuidado. Atendimento excelente e preço justo. Super satisfeito!"</p>
+                            </div>
+                            <p class="service-type">Retirada de Móveis</p>
+                            <p class="service-date">Realizado em Fevereiro/2024</p>
+                        </div>
+
+                        <!-- Depoimento 3 -->
+                        <div class="testimonial-card" role="article">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <div class="client-details">
+                                        <h3>Ana Oliveira</h3>
+                                        <p>Campo Belo, São Paulo</p>
+                                    </div>
+                                </div>
+                                <div class="rating" aria-label="Avaliação 5 de 5 estrelas">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="testimonial-text">
+                                <p>"Ótimo serviço de descarte de eletrônicos! A equipe é muito profissional e preocupada com o meio ambiente. Recomendo a todos!"</p>
+                            </div>
+                            <p class="service-type">Retirada de Lixo Eletrônico</p>
+                            <p class="service-date">Realizado em Março/2024</p>
+                        </div>
+
+                        <!-- Depoimento 4 -->
+                        <div class="testimonial-card" role="article">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <div class="client-details">
+                                        <h3>Pedro Mendes</h3>
+                                        <p>Brooklin, São Paulo</p>
+                                    </div>
+                                </div>
+                                <div class="rating" aria-label="Avaliação 5 de 5 estrelas">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <blockquote>
+                                <p>"Serviço impecável na retirada de entulho da minha reforma. Equipe pontual e organizada. Deixaram tudo limpo após a retirada!"</p>
+                            </blockquote>
+                            <p class="service-type">Retirada de Entulho</p>
+                            <p class="service-date">Realizado em Janeiro/2024</p>
+                        </div>
+
+                        <!-- Depoimento 5 -->
+                        <div class="testimonial-card" role="article">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <div class="client-details">
+                                        <h3>Juliana Costa</h3>
+                                        <p>Itaim Bibi, São Paulo</p>
+                                    </div>
+                                </div>
+                                <div class="rating" aria-label="Avaliação 5 de 5 estrelas">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <blockquote>
+                                <p>"Contratei para retirada de móveis antigos e fiquei muito satisfeita. Equipe educada e cuidadosa com todos os itens. Recomendo!"</p>
+                            </blockquote>
+                            <p class="service-type">Retirada de Móveis</p>
+                            <p class="service-date">Realizado em Fevereiro/2024</p>
+                        </div>
+
+                        <!-- Depoimento 6 -->
+                        <div class="testimonial-card" role="article">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <div class="client-details">
+                                        <h3>Roberto Almeida</h3>
+                                        <p>Saúde, São Paulo</p>
+                                    </div>
+                                </div>
+                                <div class="rating" aria-label="Avaliação 5 de 5 estrelas">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <blockquote>
+                                <p>"Excelente trabalho na retirada dos entulhos da obra. Equipe chegou no horário e foi muito eficiente. Preço justo pelo serviço!"</p>
+                            </blockquote>
+                            <p class="service-type">Retirada de Entulho</p>
+                            <p class="service-date">Realizado em Março/2024</p>
+                        </div>
+
+                        <!-- Depoimento 7 -->
+                        <div class="testimonial-card" role="article">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <div class="client-details">
+                                        <h3>Fernanda Lima</h3>
+                                        <p>Jabaquara, São Paulo</p>
+                                    </div>
+                                </div>
+                                <div class="rating" aria-label="Avaliação 5 de 5 estrelas">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <blockquote>
+                                <p>"Ótimo serviço na retirada dos eletrônicos antigos. A equipe é muito profissional e garante o descarte correto. Recomendo!"</p>
+                            </blockquote>
+                            <p class="service-type">Retirada de Lixo Eletrônico</p>
+                            <p class="service-date">Realizado em Janeiro/2024</p>
+                        </div>
+
+                        <!-- Depoimento 8 -->
+                        <div class="testimonial-card" role="article">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <div class="client-details">
+                                        <h3>Ricardo Santos</h3>
+                                        <p>Vila Clementino, São Paulo</p>
+                                    </div>
+                                </div>
+                                <div class="rating" aria-label="Avaliação 5 de 5 estrelas">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <blockquote>
+                                <p>"Serviço de primeira na retirada dos móveis. Equipe muito atenciosa e cuidadosa com todos os itens. Superou expectativas!"</p>
+                            </blockquote>
+                            <p class="service-type">Retirada de Móveis</p>
+                            <p class="service-date">Realizado em Fevereiro/2024</p>
+                        </div>
+
+                        <!-- Depoimento 9 -->
+                        <div class="testimonial-card" role="article">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <div class="client-details">
+                                        <h3>Mariana Costa</h3>
+                                        <p>Paraíso, São Paulo</p>
+                                    </div>
+                                </div>
+                                <div class="rating" aria-label="Avaliação 5 de 5 estrelas">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <blockquote>
+                                <p>"Excelente trabalho na retirada do entulho. Equipe muito profissional e comprometida. Deixaram tudo limpo e organizado!"</p>
+                            </blockquote>
+                            <p class="service-type">Retirada de Entulho</p>
+                            <p class="service-date">Realizado em Março/2024</p>
+                        </div>
+
+                        <!-- Depoimento 10 -->
+                        <div class="testimonial-card" role="article">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <div class="client-details">
+                                        <h3>Paulo Oliveira</h3>
+                                        <p>Chácara Klabin, São Paulo</p>
+                                    </div>
+                                </div>
+                                <div class="rating" aria-label="Avaliação 5 de 5 estrelas">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <blockquote>
+                                <p>"Serviço nota 10 na retirada dos eletrônicos. Equipe muito profissional e consciente com o meio ambiente. Recomendarei!"</p>
+                            </blockquote>
+                            <p class="service-type">Retirada de Lixo Eletrônico</p>
+                            <p class="service-date">Realizado em Janeiro/2024</p>
+                        </div>
+                    </div>
+
+                    <!-- Controles do carrossel -->
+                    <div class="testimonials-controls">
+                        <button class="testimonial-prev" aria-label="Depoimento anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="testimonials-indicators" role="tablist">
+                            <!-- Indicadores serão adicionados via JavaScript -->
+                        </div>
+                        <button class="testimonial-next" aria-label="Próximo depoimento">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const track = document.querySelector('.testimonials-track');
+                    const cards = document.querySelectorAll('.testimonial-card');
+                    const prevButton = document.querySelector('.testimonial-prev');
+                    const nextButton = document.querySelector('.testimonial-next');
+                    const indicators = document.querySelector('.testimonials-indicators');
+                    
+                    let currentIndex = 0;
+                    const cardWidth = cards[0].offsetWidth + 20; // Inclui margem
+                    const cardsPerView = window.innerWidth > 992 ? 3 : window.innerWidth > 768 ? 2 : 1;
+
+                    // Criar indicadores
+                    for (let i = 0; i < cards.length; i++) {
+                        const indicator = document.createElement('button');
+                        indicator.classList.add('testimonial-indicator');
+                        indicator.setAttribute('role', 'tab');
+                        indicator.setAttribute('aria-label', `Depoimento ${i + 1}`);
+                        indicator.onclick = () => goToSlide(i);
+                        indicators.appendChild(indicator);
+                    }
+
+                    const indicatorDots = document.querySelectorAll('.testimonial-indicator');
+
+                    function updateCarousel() {
+                        const offset = -currentIndex * cardWidth;
+                        track.style.transform = `translateX(${offset}px)`;
+
+                        // Atualizar classes ativas
+                        cards.forEach((card, index) => {
+                            card.classList.toggle('active', index === currentIndex);
+                        });
+
+                        indicatorDots.forEach((dot, index) => {
+                            dot.classList.toggle('active', index === currentIndex);
+                        });
+
+                        // Atualizar estado dos botões
+                        prevButton.disabled = currentIndex === 0;
+                        nextButton.disabled = currentIndex >= cards.length - cardsPerView;
+                    }
+
+                    function goToSlide(index) {
+                        currentIndex = Math.max(0, Math.min(index, cards.length - cardsPerView));
+                        updateCarousel();
+                    }
+
+                    prevButton.onclick = () => {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            updateCarousel();
+                        }
+                    };
+
+                    nextButton.onclick = () => {
+                        if (currentIndex < cards.length - cardsPerView) {
+                            currentIndex++;
+                            updateCarousel();
+                        }
+                    };
+
+                    // Inicializar carrossel
+                    updateCarousel();
+
+                    // Suporte a gestos de toque
+                    let touchStartX = 0;
+                    let touchEndX = 0;
+
+                    track.addEventListener('touchstart', e => {
+                        touchStartX = e.touches[0].clientX;
+                    });
+
+                    track.addEventListener('touchend', e => {
+                        touchEndX = e.changedTouches[0].clientX;
+                        handleSwipe();
+                    });
+
+                    function handleSwipe() {
+                        const swipeDistance = touchStartX - touchEndX;
+                        if (Math.abs(swipeDistance) > 50) {
+                            if (swipeDistance > 0 && currentIndex < cards.length - cardsPerView) {
+                                currentIndex++;
+                            } else if (swipeDistance < 0 && currentIndex > 0) {
+                                currentIndex--;
+                            }
+                            updateCarousel();
+                        }
+                    }
+
+                    // Atualizar em redimensionamento
+                    window.addEventListener('resize', () => {
+                        const newCardsPerView = window.innerWidth > 992 ? 3 : window.innerWidth > 768 ? 2 : 1;
+                        if (newCardsPerView !== cardsPerView) {
+                            currentIndex = 0;
+                            updateCarousel();
+                        }
+                    });
+                });
+            </script>
+        </section> -->
 
         <section class="about" id="sobre">
             <div class="container">
@@ -2052,10 +2696,13 @@ body {
 
     <script src="script.js"></script>
     <script>
+        // Melhora a acessibilidade do menu mobile
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
 
         mobileMenuBtn.addEventListener('click', () => {
+            const isExpanded = navLinks.classList.contains('active');
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
             navLinks.classList.toggle('active');
         });
 
@@ -2063,16 +2710,17 @@ body {
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
             });
         });
 
-        // Scroll suave para links internos
+        // Scroll suave para links internos com suporte a teclado
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const headerOffset = 80; // Altura do header fixo
+                    const headerOffset = 80;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -2080,17 +2728,95 @@ body {
                         top: offsetPosition,
                         behavior: 'smooth'
                     });
+                    
+                    // Foca no elemento após a rolagem
+                    target.setAttribute('tabindex', '-1');
+                    target.focus({preventScroll: true});
                 }
             });
         });
 
-        // Adiciona classe 'scrolled' ao header quando a página é rolada
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // Carrossel acessível
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
+            let currentIndex = 0;
+            const interval = 5000;
+
+            function showSlide(index) {
+                // Remove classes e estados ativos
+                items.forEach(item => {
+                    item.classList.remove('active');
+                    item.setAttribute('aria-hidden', 'true');
+                });
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                    indicator.setAttribute('aria-selected', 'false');
+                });
+
+                // Adiciona classes e estados ativos ao slide atual
+                items[index].classList.add('active');
+                items[index].setAttribute('aria-hidden', 'false');
+                indicators[index].classList.add('active');
+                indicators[index].setAttribute('aria-selected', 'true');
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % items.length;
+                showSlide(currentIndex);
+            }
+
+            // Adiciona eventos de clique e teclado aos indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    showSlide(currentIndex);
+                });
+
+                indicator.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        currentIndex = index;
+                        showSlide(currentIndex);
+                    }
+                    
+                    // Navegação com setas
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const nextIndex = (index + 1) % indicators.length;
+                        indicators[nextIndex].focus();
+                    }
+                    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const prevIndex = (index - 1 + indicators.length) % indicators.length;
+                        indicators[prevIndex].focus();
+                    }
+                });
+            });
+
+            // Pausa o carrossel quando o mouse está sobre ele
+            const carousel = document.querySelector('.hero-carousel');
+            let autoplayInterval;
+
+            function startAutoplay() {
+                autoplayInterval = setInterval(nextSlide, interval);
+            }
+
+            function stopAutoplay() {
+                clearInterval(autoplayInterval);
+            }
+
+            carousel.addEventListener('mouseenter', stopAutoplay);
+            carousel.addEventListener('mouseleave', startAutoplay);
+            carousel.addEventListener('focusin', stopAutoplay);
+            carousel.addEventListener('focusout', startAutoplay);
+
+            // Inicia o carrossel automático
+            startAutoplay();
+
+            // Respeita preferência de redução de movimento
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                stopAutoplay();
             }
         });
 
@@ -2102,24 +2828,6 @@ body {
             document.body.classList.add('mobile');
         }
 
-        // Animação de entrada dos elementos quando ficam visíveis
-        const observerOptions = {
-            threshold: 0.2
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observa elementos que devem ser animados
-        document.querySelectorAll('.service-card, .benefit-item, .pricing-card').forEach(el => {
-            observer.observe(el);
-        });
-
         // Melhora a experiência de clique nos botões em dispositivos móveis
         document.querySelectorAll('.btn').forEach(button => {
             button.addEventListener('touchstart', () => {
@@ -2130,40 +2838,6 @@ body {
                 button.style.transform = 'scale(1)';
             });
         });
-
-        // Carrossel da Hero Section
-        document.addEventListener('DOMContentLoaded', function() {
-            const items = document.querySelectorAll('.carousel-item');
-            const indicators = document.querySelectorAll('.indicator');
-            let currentIndex = 0;
-            const interval = 5000; // Tempo entre as transições (5 segundos)
-
-            function showSlide(index) {
-                // Remove classe active de todos os slides
-                items.forEach(item => item.classList.remove('active'));
-                indicators.forEach(indicator => indicator.classList.remove('active'));
-
-                // Adiciona classe active ao slide atual
-                items[index].classList.add('active');
-                indicators[index].classList.add('active');
-            }
-
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % items.length;
-                showSlide(currentIndex);
-            }
-
-            // Adiciona eventos de clique aos indicadores
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    currentIndex = index;
-                    showSlide(currentIndex);
-                });
-            });
-
-            // Inicia o carrossel automático
-            setInterval(nextSlide, interval);
-        }); 
     </script>
 </body>
 </html> 
